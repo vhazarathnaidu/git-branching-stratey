@@ -1,445 +1,172 @@
-**## VERSION CONTROL SYSTEM** 
-
-
-
-* **Version Control Systems (VCS) is tool for tracking and managing changes in software projects.** 
-* **They allow developers to collaborate efficiently, maintain a history of changes, and revert to previous versions when needed.**
-* **Three types of Version Control Systems:**
-* 
-**&nbsp;       1.Local :**
-
-*   **A Local Version Control System operates entirely on your personal machine without any connection to a remote repository.**
-*  **All changes and version history are stored in a local database on your computer.**
-* **Example: laptop.**
-* 
-**&nbsp;**          
-
-        **2.Centralized:**
-
-* **In a Centralized Version Control System, all the files and their version history are stored in a single central server.** 
-* **Developers connect to this server to access or modify files.**
-* **Examples: SVN,CVS**
-* 
-**&nbsp;       3.Distributed:**
-
-* **Distributed version control systems contain multiple repositories.** 
-* **Each user has their own repository and working copy.** 
-* **Just committing your changes will not give others access to your changes.** 
-* **This is because commit will reflect those changes in your local repository and you need to push them in order to make them visible on the central repository.**
-* **Similarly, When you update, you do not get others changes unless you have first pulled those changes into your repository.** 
-* **Example :Git,Mercurial.**
-
-
-
-**Refer:https://www.geeksforgeeks.org/git/version-control-systems/ for further reference**
-
-
-
-**### GIT**
-
-
-
-* **Git is an open-source distributed version control system that helps teams track and manage code changes, collaborate seamlessly, and work on projects of any size.** 
-* **It keeps a history of every change, allowing you to revisit or restore previous versions, and makes it easy to fix mistakes without losing progress.**
-* 
-**\## Key features:**
-
-* **Distributed version control system**
-* **Merging and Branching**
-* **Multiple workflows**
-* 
-**\## Installation of Git**
-
-   **Linux:**
-
-     **sudo apt update \&\& sudo apt install git-all**
-
-    **git --version**
-
-
-
-**Windows:**
-
-        **link: https://git-scm.com/install/windows**
-
-**refer here https://www.geeksforgeeks.org/installation-guide/how-to-install-git-on-windows-command-line/ for install on windows**
-
-
-
-**## Configuration \& Setup**
-
-**Command	                                                                Description**
-
-**git config --global user.name "Your Name"	        Sets your Git username globally.**
-
-**git config --global user. Email "you@example.com"	Sets your Git email globally.**
-
-**git config --list	                                                        Displays all Git configuration settings.**
-
-
-
-**## Basic Git Commands**
-
-**Command	                                Description**
-
-**git init	                                     Initializes a new Git repository in your project directory.**
-
-**git clone <url>	                     Creates a copy of a remote repository locally.**
-
-**git status	                             Shows the current state of the working directory and staging area.**
-
-**git add <file>        	                     Stages changes for the next commit. Use . to stage all changes.**
-
-**git commit -m "message"	     Records staged changes with a descriptive message.**
-
-**git push	                                     Sends committed changes to a remote repository.**
-
-**git pull	                                     Fetches and integrates changes from a remote repository.**
-
-**git fetch	                                     Downloads changes from a remote repository without merging.**
-
-**git merge <branch>	             Combines changes from another branch into the current branch.**
-
-**git branch	                             Lists all branches in the repository.**
-
-**git checkout <branch>	             Switches to a different branch.**
-
-**git log	                                     Displays a history of commits.**
-
-**git diff	                                     Shows differences between files or commits.**
-
-**git reset	                                     Unstages changes or resets to a previous commit.**
-
-**git rm <file>	                             Removes a file from the working directory and staging area.**
-
-**git stash	                                     Temporarily saves changes that are not ready to commit.**
-
-**git tag <name>	                     Marks a specific commit with a tag (often used for releases).**
-
-
-
-**refer here for git commands "https://www.atlassian.com/git/tutorials/atlassian-git-cheatsheet"**
-
-
-
-**## Git workflow** 
-
-
-
-**"https://tse3.mm.bing.net/th/id/OIP.I8WUrokGOU\_lxFqGkuDewgHaED?rs=1\&pid=ImgDetMain\&o=7\&rm=3 " refer here for workflow   how the things are going on the flow**                                                                                        
-
-
-
-**## Creating a local repository**
-
-**create a new folder**
-
-**mkdir hello-git**
-
-**cd hello-git**
-
-**intialize git in that repo**
-
-**git init**
-
-**this creates a new folder .git**
-
-**lets know the status**
-
-**git status**
-
-**now create a new file and check status by using command**
-
- 
-
-**'git status'**
-
-
-
-**\* Now lets add the changes to staging area and view the status**
-
-
-
-**git add <filename|directory>**
-
-
-
-**git status**
-
-
-
-**\* Now lets commit changes. A git commit requires**
-
-**\* username (set it once)**
-
-**\* email id (set it once)**
-
-**\* commit message (pass as argument)**
-
-**\* date time (we need not pass)**
-
-**\* Lets set username and email id**
-
-
-
-**git config --global user.name "username"**
-
-**git config --global user.email "useremai"**
-
-**Lets commit the changes**
-
-**git commit -m "First Commit"**
-
-
-
- **lets view git history**
-
-
-
-**git log**
-
-**Git deals with changes not individual files**
-
-**In working tree we will have two types of files**
-
-**tracked**
-
-**untracked (never has been part of git history)**
-
-**Now lets make one more change and add a commit.**
-
-**git status**
-
-
-
-**## Branches in Git**
-
-* **Branches allow parallel development. we might need parallel development for**
-*      **multiple customers**
-*     **multiple versions**
-*     **POC (proof of concept)**
-* **HEAD pointer points to Branch which points to latest commit on that branch**
-* **In git the default branch is master**
-* **Branches \& Tags are considered as reference objects**
-* **Refer Here for git branch docs from Atlassian " https://www.atlassian.com/git/tutorials/using-branches"**
-* **When we want changes from one branch to another we have the following options**
-* **merge**
-* **rebase**
-* **cherry-pick**
-* **basic merge process**
-* **checkout to the destination branch where the merge has to happen**
-* **execute the command to merge from source**
-* 
-* 
-**\## Practical branching**
-
-
-
-* **initialize a new repo**
-* **create a commit**
-* **now view the branches**
-* **git branch**
-* **Rename the branch from master to main**
-* **git branch -m main**
-* **Add few more commits**
-* 
-**\## Merge:**
-
-* **Git Merge is a command used to combine the changes from two branches into one.**
-*  **It integrates work from different branches into a single unified history without losing progress.**
-*  **For example, you can merge a feature branch into the main branch to include all recent updates.**
-* **Preserves History: Keeps the commit history of both branches.**
-* **Automatic and Manual: Automatically merges unless there are conflicts.**
-* **Fast-Forward Merge: Moves the branch pointer forward if no diverging changes exist.**
-* **Merge Commit: Creates a special commit to combine histories.**
-* **No Deletion: Branches remain intact after merging.**
-* **Used for Integration: Commonly integrates feature branches into main branches.**
-* 
-**\## practical for merge**
-
-* **Now we will be creating a new branch rel\_v1.0**
-* **git branch rel\_v1.0**
-* **And create a commit C3**
-* **Lets create one more commit**
-* **Now merge the changes from rel\_v1.0 to main**
-* **Now lets create a branch rel\_v1.1 from main**
-* **# create branch**
-* **git branch rel\_v1.1**
-* **# checkout**
-* **git checkout rel\_v1.1**
-
-
-
-**## create a new branch \& checkout  for non-fast-farward method**
-
-**git checkout -b rel\_v1.1**
-
-**create two commits “c5” and “c6” on rel\_v1.1**
-
-**checkout to main and create a commit “c7” here it commit c7 on main and merge the rel\_v1.1 to main it creates a merge commit id --using --non--fast-farward method**
-
- 
-
-**refer here for "https://www.atlassian.com/git/tutorials/using-branches/git-merge" merge**
-
- 
-
-**## other commands of importance**
-
-**# get entire log**
-
-**git log**
-
-
-
-**# get last 3 commits log**
-
-**git log -n 3**
-
-
-
-**# get one-line history per commit**
-
-
-
-**git log --oneline**
-
-
-
-**## Rebase :**
-
-* **Git Rebase is a Git command used to integrate changes from one branch into another by moving your commits to the latest point (tip) of the target branch.** 
-* **Unlike Git merge, which creates a new merge commit and retains the commit history as a branching tree.**
-* **rebase rewrites your commit history to make it look like your work started from the most recent updates on the target branch.**
-* 
-**Example :**
-
-  **# Integrates changes in "experiment" to "master"**
-
-**$ git checkout experiment**
-
-**$ git rebase master**
-
-
-
-**<experiment>is the branch with the changes you want to rebase.**
-
-**<base-branch> is the branch you want to rebase your changes onto, typically main or master.**
-
-* **refer here "https://www.atlassian.com/git/tutorials/rewriting-history/git-rebase" for rebase.**
-
-
-
-**## cherry-pick**
-
-
-
-* **git cherry-pick is a powerful command that enables arbitrary Git commits to be picked by reference and appended to the current working HEAD.** 
-* **Cherry picking is the act of picking a commit from a branch and applying it to another.** 
-* **git cherry-pick can be useful for undoing changes.** 
-* **For example**
-* 
-**&nbsp;       say a commit is accidently made to the wrong branch. You can switch to the correct branch and cherry-pick the commit to where it should belong.**
-
-* **refer her for "https://www.atlassian.com/git/tutorials/cherry-pick" cherry-pick.**
-
-
-
-
-
-**## Altering History**
-
-* **Altering history in Git can be powerful but risky—it affects the commit history and can disrupt collaboration if not handled carefully.**
-* **by using the git --amend we can alter the history**
-* 
-**1\. Amend the Last Commit:**
-
-* **Use when you want to fix or update the most recent commit (e.g., add forgotten files or correct the message).**
-* **bash**
-* **git commit --amend**
-* **Opens your editor to change the commit message.**
-* **Includes staged changes into the previous commit.**
-* 
-**2\. Rebase (Interactive):**
-
-* **Use to rewrite multiple commits, squash them, edit messages, or reorder.**
-* **bash**
-* **git rebase -i HEAD~n**
-* **Replace n with the number of commits you want to edit.**
-* **Options include:**
-* **pick: keep the commit**
-* **reword: change the message**
-* **edit: modify the commit**
-* **squash: combine with previous commit**
-* 
-**3\. Reset:**
-
-* **Use to move the current branch to a different commit. Can be destructive.**
-* **bash**
-* **git reset --soft HEAD~1   # Keeps changes staged**
-* **git reset --mixed HEAD~1  # Keeps changes unstaged**
-* **git reset --hard HEAD~1   # Discards changes completely**
-* 
-**4.Squash:**
-
-* **A squash merge is a Git operation that combines all the changes from a feature branch into a single commit when merging it into the target branch.** 
-* **This approach keeps the commit history clean and linear, making it easier to follow.**
-* **Refer here "https://intellipaat.com/blog/git-squash/".for how to create squash.**
-* 
-**\## Git Remote repository**
-
-
-
-**A Remote Repository is another git repository located any where**
-
-* **Popular Remote Repositories:**
-* **Cloud Hosted Solutions:**
-* **GitHub: Create Account**
-* **Gitlab**
-* **Bitbucket**
-* **Azure Source Repos**
-* **AWS Code Commit**
-* **Self Hosted Repositories**
-* **Gitlab**
-* **Gitolite**
-
-
-
-
-
-**##GitHub :**
-
-* **GitHub is a cloud-based platform for hosting and managing Git repositories.** 
-* **It’s widely used by developers and teams to collaborate on code, track changes, and manage software projects.**
-* **GitHub allows to communicate over**
-* **HTTPS**
-* **SSH**
-* **To add a connection between local and remote**
-* **git remote add <conn-name> <url>**
-* **Generally the default connection name used is origin**
-* **git remote add origin <url of repo>**
-* **git remote -v**
-* **git config --list**
-
-
-
-* **git push --upstream origin <branch name> to push and set track from local branch repository to remote repository branch.**
-
-
-
-**## pull request**
-
-
-
-* **A pull request to propose and collaborate on changes to a repository.** 
-* **These changes are proposed in a branch, which ensures that the default branch only contains finished and approved work.**
-* **Refer here for "https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request" how to create a pull request.**
-
-
-
-
-
-
-
-
-
+### Version Control System
+
+ A Version Control System (VCS) is a software tool that helps developers manage changes to source code over time.
+ It allows multiple developers to collaborate on a project, track changes, and revert to previous versions if needed.
+ VCSs are essential for maintaining the integrity of codebases, especially in large projects with many contributors.
+
+ there are two main types of VCS:
+
+  1. Centralized Version Control System (CVCS):
+      - In a CVCS, there is a single central repository where all the code is stored.
+      - Developers check out code from this central repository, make changes, and then commit those changes back to the central repository.
+      - Examples of CVCS include Subversion (SVN) and CVS.
+
+  2. Distributed Version Control System (DVCS):
+      - In a DVCS, each developer has a complete copy of the entire repository, including its history.
+      - Developers can work offline and commit changes to their local repository. When they're ready, they can push their changes to a remote repository.
+      - Examples of DVCS include Git, Mercurial, and Bazaar.
+
+### GIT
+
+  Git is a distributed version control system that is widely used for managing source code in software development projects. It was created by Linus Torvalds in 2005 to support the development of the Linux kernel. Git is known for its speed, flexibility, and powerful branching and merging capabilities.
+  
+  Key features of Git include:
+  
+    1. Distributed Architecture: Each developer has a full copy of the repository, allowing for offline work and faster operations.
+    
+    2. Branching and Merging: Git makes it easy to create branches for new features or bug fixes, and merge them back into the main codebase when ready.
+    
+    3. Speed: Git is designed to be fast, with most operations performed locally, reducing the need for network access.
+    
+    4. Data Integrity: Git uses a hashing algorithm (SHA-1) to ensure the integrity of the data, making it difficult to lose or corrupt information.
+    
+    5. Collaboration: Git supports multiple workflows for collaboration, including feature branching, pull requests, and code reviews.
+  
+  Overall, Git is a powerful tool that helps developers manage their code effectively, collaborate with others, and maintain a history of changes over time.
+
+### Basic Git Commands
+
+`git init` - Initializes a new Git repository in the current directory.
+`git clone <repository_url>`- Creates a copy of a remote repository on your local machine.
+`git add <file_name>` - Stages changes to a file for the next commit.
+`git commit -m "commit message"` - Commits the staged changes with a descriptive message.
+`git status`- Displays the current status of the repository, including staged and unstaged changes.
+`git log`- Shows the commit history of the repository.
+`git branch` - Lists all branches in the repository or creates a new branch.
+`git checkout <branch_name>` - Switches to the specified branch.
+`git merge <branch_name>`- Merges the specified branch into the current branch.
+`git pull` - Fetches and merges changes from a remote repository into the current branch.
+`git push` - Uploads local commits to a remote repository.
+`git remote` - Manages remote repository connections.
+`git fetch` - Downloads changes from a remote repository without merging them.
+`git reset --hard <commit_hash>` - Resets the current branch to a specific commit,
+  discarding all changes after that commit.
+`git stash`- Temporarily saves changes that are not ready to be committed.
+`git tag` <tag_name>` - Creates a tag for a specific commit, often used for releases.
+
+### Branching in Git
+
+Branching is a powerful feature in Git that allows developers to create separate lines of development within a repository.
+Each branch represents an independent version of the codebase, enabling multiple features, bug fixes, or experiments to be worked on simultaneously without affecting the main codebase.
+when we want to combine the changes made in one branch back into another branch.we have three types
+1.merge
+2.rebase
+3.cherry-pick
+Refer Here for git branch docs from Atlassian " <https://www.atlassian.com/git/tutorials/using-branches>"
+
+## Merge
+
+  Merging is the process of combining changes from one branch into another branch.
+  When you merge a branch, Git creates a new commit that incorporates the changes from both branches.
+  This is typically done when a feature or bug fix is complete and needs to be integrated into the main codebase (often the "main" or "master" branch).
+  To merge a branch into the current branch, you would use the following command:
+    git checkout main          # Switch to the main branch
+    git merge feature-branch   # Merge the feature-branch into main
+  If there are no conflicts, Git will automatically create a new merge commit.
+  If there are conflicts, Git will prompt you to resolve them before completing the merge.
+  Refer here for "<https://www.atlassian.com/git/tutorials/using-branches/git-merge>" merge
+
+## Rebase
+
+  Rebasing is another way to integrate changes from one branch into another.
+  Instead of creating a new merge commit, rebasing rewrites the commit history by applying the changes from the source branch on top of the target branch.
+  This results in a linear commit history, which can make it easier to understand the sequence of changes.
+  To rebase a branch onto another branch, you would use the following command:
+    `git checkout feature-branch`  # Switch to the feature branch
+    `git rebase main`             # Rebase feature-branch onto main
+  If there are conflicts during the rebase, Git will pause and allow you to resolve them before continuing.
+
+## Cherry-pick
+
+  Cherry-picking is the process of applying a specific commit from one branch to another branch.
+  This is useful when you want to incorporate a particular change without merging or rebasing the entire branch.
+  To cherry-pick a commit, you would use the following command:
+    `git checkout main`               # Switch to the main branch
+    `git cherry-pick <commit_hash>`   # Apply the specific commit to main
+  Git will create a new commit on the target branch that contains the changes from the cherry-picked commit.
+
+## Other commands of importance
+
+`git diff` - Shows the differences between files or commits.
+`git clean -f` - Removes untracked files from the working directory.
+`git reflog` - Shows a log of all references (branches, HEAD) and their changes.
+`git config` - Configures Git settings, such as user name and email.
+`git log` --oneline --graph --decorate --all - Displays a concise, graphical representation of the commit history.
+`git log -n` - Shows the last n commits in the log.
+
+### Altering commit history
+
+Altering history in Git can be powerful but risky—it affects the commit history and can disrupt collaboration if not handled carefully.
+by using the git --amend we can alter the history
+`git commit --amend` - Modifies the most recent commit, allowing you to change the commit message or add new changes.
+
+2. Rebase (Interactive):
+Use to rewrite multiple commits, squash them, edit messages, or reorder.
+bash
+`git rebase -i HEAD~n`
+Replace n with the number of commits you want to edit.
+Options include:
+pick: keep the commit
+reword: change the message
+edit: modify the commit
+squash: combine with previous commit
+3. Reset:
+Use to move the current branch to a different commit. Can be destructive.
+bash
+`git reset --soft HEAD~1` # Keeps changes staged
+`git reset --mixed HEAD~1`# Keeps changes unstaged
+`git reset --hard HEAD~1` # Discards changes completely
+4.Squash:
+A squash merge is a Git operation that combines all the changes from a feature branch into a single commit when merging it into the target branch.
+This approach keeps the commit history clean and linear, making it easier to follow.
+Refer here "<https://intellipaat.com/blog/git-squash/".for> how to create squash.
+
+## GITHUB
+
+  GitHub is a web-based platform that provides hosting for Git repositories, along with a suite of collaboration and project management tools.
+  It is widely used by developers and organizations to share code, collaborate on projects, and manage software development workflows.
+  Key features of GitHub include:
+  
+    1. Repository Hosting: GitHub allows users to create and host Git repositories, making it easy to share code with others.
+    
+    2. Collaboration Tools: GitHub provides features such as pull requests, code reviews, and issue tracking to facilitate collaboration among developers.
+    
+    3. Project Management: GitHub offers project boards, milestones, and task lists to help teams organize and manage their work.
+    
+    4. Continuous Integration/Continuous Deployment (CI/CD): GitHub integrates with various CI/CD tools to automate testing and deployment processes.
+    
+    5. Community and Social Features: GitHub has a large community of developers who contribute to open-source projects, share knowledge, and collaborate on code.
+
+GitHub allows to communicate over
+HTTPS
+SSH
+To add a connection between local and remote
+`git remote add <connection_name> <repository_url>`
+Generally the default connection name used is origin
+`git remote add origin`
+`git remote -v` to verify the connection.
+To set up user information for all local repositories use:
+`git config --list` to view current configuration
+`git config --global user.name "Your Name"`
+`git push --upstream origin <branch name>` to push the code to remote repository.
+
+### pull Request
+
+ A pull request (PR) is a feature in GitHub (and other version control platforms) that allows developers to propose changes to a codebase.
+ It is a way to request that your changes be reviewed and merged into another branch, typically the main branch of a repository.
+ Pull requests facilitate collaboration and code review, ensuring that changes are thoroughly vetted before being integrated into the main codebase.
+ Key aspects of pull requests include:
+   1. Code Review: Team members can review the proposed changes, leave comments, and suggest improvements.
+   2. Discussion: Pull requests provide a platform for discussing the changes, addressing concerns, and making decisions about the code.   
+   3. Merging: Once the changes have been reviewed and approved, the pull request can be merged into the target branch.
+ Overall, pull requests are an essential part of modern software development workflows, promoting collaboration, code quality, and transparency.
