@@ -1,6 +1,5 @@
 # Git
 ---------
-
 **Developed by Linus Torvalds**
 
 ## Git A Distributed Version Control System
@@ -10,26 +9,22 @@ Git is a free and open-source distributed version control system designed to han
 
 ## Types of Version Control Systems
 -----------------------------------
-<<<<<<< HEAD:Git/README.md
+
 ## Local: 
 (Rare) history and repo is maintained and used from a same machine.
 
 ## Centralized:
-=======
+
 # Local: 
 (Rare) history and repo is maintained and used from a same machine.
 
 # Centralized:
->>>>>>> ac7587c514383ce704177c84ba522418ae5311b3:Git-Notes/README.md
+
  One centralized server(s) where clients push and pull changes.
 Single source of truth (whole repo) on a server Client syncs with it.
 Client Software is different from server software.
 
-<<<<<<< HEAD:Git/README.md
-## Server outage: 
-=======
 # Server outage: 
->>>>>>> ac7587c514383ce704177c84ba522418ae5311b3:Git-Notes/README.md
 team blocked history lives centrally.
 
 ## Examples: 
@@ -40,11 +35,7 @@ Every one has a full history and any one can act as a server.
 Each clone has a full repo (history + metadata + code)
 Work is local first then shared Any one can act as a server Every one will have same software installed
 
-<<<<<<< HEAD:Git/README.md
 ## Examples:
-=======
-# Examples:
->>>>>>> ac7587c514383ce704177c84ba522418ae5311b3:Git-Notes/README.md
 Git
 Mercurial
 
@@ -61,19 +52,6 @@ Repository: This a storage space with versioning
 
 ## Key Features of Git
 -------------------------
-
-<<<<<<< HEAD:Git/README.md
-1. ## Distributed Version Control: 
-Unlike centralized version control systems, Git allows every developer to have a complete copy of the repository, including its history. This makes it possible to work offline and ensures that no single point of failure exists.
-
-2. ## Branching and Merging: 
-Git provides cheap local branching, which allows developers to create, switch, and delete branches quickly. This feature is essential for experimenting with new ideas, fixing bugs, and developing features in isolation before merging them into the main branch.
-
-3. ## Staging Area: 
-Git introduces the concept of a staging area, where changes can be reviewed and modified before committing them to the repository. This allows developers to craft their commits more carefully and keep their history clean.
-
-4. ## Multiple Workflows: 
-=======
 1. ## Distributed Version Control:
 Unlike centralized version control systems, Git allows every developer to have a complete copy of the repository, including its history. This makes it possible to work offline and ensures that no single point of failure exists.
 
@@ -84,7 +62,6 @@ Git provides cheap local branching, which allows developers to create, switch, a
 Git introduces the concept of a staging area, where changes can be reviewed and modified before committing them to the repository. This allows developers to craft their commits more carefully and keep their history clean.
 
 4. ## Multiple Workflows:
->>>>>>> ac7587c514383ce704177c84ba522418ae5311b3:Git-Notes/README.md
 Git supports various workflows, such as centralized, feature branch, and forking workflows, making it flexible and adaptable to different project needs.
 
 ## Basic Git Commands
@@ -221,13 +198,8 @@ A git commit is a hash of parent commit
 Refer Here for the git rebase
 # https://www.atlassian.com/git/tutorials/rewriting-history/git-rebase
 
-<<<<<<< HEAD:Git/README.md
- cherry-pick
- Refer Here for cherry-pick
-=======
 cherry-pick
 Refer Here for cherry-pick
->>>>>>> ac7587c514383ce704177c84ba522418ae5311b3:Git-Notes/README.md
 # https://www.atlassian.com/git/tutorials/cherry-pick
 
 Git has two logs
@@ -301,10 +273,7 @@ Direction:
 First we will create a remote repo then local Create a remote repo
 Clone refers to an operation where you have remote but no equivalent local repo on your system.
 git clone <url>
-<<<<<<< HEAD:Git/README.md
- 
-=======
->>>>>>> ac7587c514383ce704177c84ba522418ae5311b3:Git-Notes/README.md
+
 Clone create a new folder with working tree and local repo. It also sets the upstream for default branch and default connection will be origin.
 Set up ssh keys on github
 If you don't have keys already execute ssh-keygen this generates two keys in ~/.ssh
@@ -320,11 +289,8 @@ To avoid unneceassary merge commits
  git pull <connection-name> <branch> --rebase
  git pull => fetch + merge
 
-<<<<<<< HEAD:Git/README.md
-## Git Remote (contd)
-=======
+
 # Git Remote (contd)
->>>>>>> ac7587c514383ce704177c84ba522418ae5311b3:Git-Notes/README.md
 For multi user understanding watch classroom video
 Github Fork & Getting your changes merged
 Github has an option to fork where a copy of the others repo will be created in your account
