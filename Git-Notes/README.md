@@ -8,28 +8,28 @@
 
 Git is a free and open-source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. It is widely used by developers to manage their source code and track changes over time. Git allows multiple developers to work on the same project simultaneously without interfering with each other's work.
 
-##Types of Version Control Systems
+## Types of Version Control Systems
 -----------------------------------
-#Local: 
+# Local: 
 (Rare) history and repo is maintained and used from a same machine.
 
-#Centralized:
+# Centralized:
  One centralized server(s) where clients push and pull changes.
 Single source of truth (whole repo) on a server Client syncs with it.
 Client Software is different from server software.
 
-#Server outage: 
+# Server outage: 
 team blocked history lives centrally.
 
-##Examples: 
+## Examples: 
 Subversion (svn), Clear case, TFVC
 
-##Distributed: 
+## Distributed: 
 Every one has a full history and any one can act as a server.
 Each clone has a full repo (history + metadata + code)
 Work is local first then shared Any one can act as a server Every one will have same software installed
 
-#Examples:
+# Examples:
 Git
 Mercurial
 
@@ -41,19 +41,23 @@ The core working of Git is all about understanding 5 areas of
 4. remote repo
 5. stash
 
-##Core concepts:
+## Core concepts:
 Repository: This a storage space with versioning
 
 ## Key Features of Git
 -------------------------
 
-1. ## Distributed Version Control: Unlike centralized version control systems, Git allows every developer to have a complete copy of the repository, including its history. This makes it possible to work offline and ensures that no single point of failure exists.
+1. ## Distributed Version Control:
+Unlike centralized version control systems, Git allows every developer to have a complete copy of the repository, including its history. This makes it possible to work offline and ensures that no single point of failure exists.
 
-2. ## Branching and Merging: Git provides cheap local branching, which allows developers to create, switch, and delete branches quickly. This feature is essential for experimenting with new ideas, fixing bugs, and developing features in isolation before merging them into the main branch.
+2. ## Branching and Merging:
+Git provides cheap local branching, which allows developers to create, switch, and delete branches quickly. This feature is essential for experimenting with new ideas, fixing bugs, and developing features in isolation before merging them into the main branch.
 
-3. ## Staging Area: Git introduces the concept of a staging area, where changes can be reviewed and modified before committing them to the repository. This allows developers to craft their commits more carefully and keep their history clean.
+3. ## Staging Area:
+Git introduces the concept of a staging area, where changes can be reviewed and modified before committing them to the repository. This allows developers to craft their commits more carefully and keep their history clean.
 
-4. ## Multiple Workflows: Git supports various workflows, such as centralized, feature branch, and forking workflows, making it flexible and adaptable to different project needs.
+4. ## Multiple Workflows:
+Git supports various workflows, such as centralized, feature branch, and forking workflows, making it flexible and adaptable to different project needs.
 
 ### Basic Git Commands
 ---------------------------
@@ -91,15 +95,13 @@ git pull: Fetches and merges changes from a remote repository.
 ## Check the Cheat sheet
 --------------------------------
 
-https://education.github.com/git-cheat-sheet-education.pdf
+# https://education.github.com/git-cheat-sheet-education.pdf
 
-
-
-Using git  Creating a local repository
+# Using git  Creating a local repository
 
 create a new folder
  mkdir hello-git
- cd hello-git
+ 'cd hello-git'
 initialize git repo
  git init
 this creates a new folder .git
@@ -148,14 +150,14 @@ Adding only changes w.r.t current directory
 We want git to explicitly ignore some files or folder, We use .gitignore Refer Here Generally for all the popular language combinations we can generate .gitignore file
 Prompt of the day for exploring git command options
 
-##Git contd
+## Git contd
 -------------
 
 Branches in Git
 Branches allow parallel development. we might need paralled development for multiple customers muliple versions poc (proof of concept)
 HEAD pointer points to Branch which points to latest commit on that branch In git the default branch is master Branches & Tags are considered as reference objects
 Refer Here for git branch docs from 
-https://www.atlassian.com/git/tutorials/using-branches
+# https://www.atlassian.com/git/tutorials/using-branches
 
 When we want changes from one branch to another we have the following options
 
@@ -177,7 +179,7 @@ Now we will be creating a new branch tsak_v1.0
  git branch task_v1.0
 
  
-##Merge conflict
+## Merge conflict
 ----------------
 Refer Here for merge conflicts rebase
 rebase is the only command in git which can change history.
@@ -189,11 +191,11 @@ A git commit is a hash of parent commit
 . changes
 
 Refer Here for the git rebase
-https://www.atlassian.com/git/tutorials/rewriting-history/git-rebase
+# https://www.atlassian.com/git/tutorials/rewriting-history/git-rebase
 
 cherry-pick
 Refer Here for cherry-pick
-https://www.atlassian.com/git/tutorials/cherry-pick
+# https://www.atlassian.com/git/tutorials/cherry-pick
 
 Git has two logs
 the log which we use to understand the graph (DAG)
@@ -205,7 +207,7 @@ Altering history
 Ammend commits: command git commit --amend
 This can change the commit message and add more changes from staging area to this commit where HEAD is pointed to
 
-##Git interactive rebasing
+## Git interactive rebasing
 
 HEAD~n => represents going back n commits.
 Actions that can be performed
@@ -221,12 +223,12 @@ git rebase -i HEAD~n
 Merge conflicts in rebasing have to fixed added to the staging area and then git rebase --continue
 Rebase can be aborted using git rebase --abort in the cases of conflicts or edits
 
-https://hackernoon.com/beginners-guide-to-interactive-rebasing-346a3f9c3a6d
+# https://hackernoon.com/beginners-guide-to-interactive-rebasing-346a3f9c3a6d
 for interactive rebasing.
 
-Note: Be extremely careful while doing interactive rebase of public branches.
+# Note: Be extremely careful while doing interactive rebase of public branches.
 
-##Git Remote Repositories
+## Git Remote Repositories
 
 A Remote Repository is another git repository located any where
 Popular Remote Repositories:
@@ -240,7 +242,7 @@ Self Hosted Repostiories:
 . Gitlab
 . Gitolite
 
-##Git Remote
+## Git Remote
 --------------
 Any machine can act as a git remote. Generally git remote will have a daemon which handles communication, user management. Git is commonly installed on all nodes.
 Git Remote can be installed on servers (self-hosting.)
@@ -266,7 +268,6 @@ Direction:
 First we will create a remote repo then local Create a remote repo
 Clone refers to an operation where you have remote but no equivalent local repo on your system.
 git clone <url>
-# it creates a new folder 
 Clone create a new folder with working tree and local repo. It also sets the upstream for default branch and default connection will be origin.
 Set up ssh keys on github
 If you don't have keys already execute ssh-keygen this generates two keys in ~/.ssh
@@ -277,12 +278,12 @@ Underlying concept
 Every remote branch has a local representation generally branches will be created with names remotes/<conn-name>/<branch>
 When you are sending changes (pushing) to remote the actual remotes latest commit id of the branch should be matching your remote representation
 To get the latest changes the command is
-git pull <connection-name> <branch>
+ git pull <connection-name> <branch>
 To avoid unneceassary merge commits
-git pull <connection-name> <branch> --rebase
-git pull => fetch + merge
+ git pull <connection-name> <branch> --rebase
+ git pull => fetch + merge
 
-Git Remote (contd)
+# Git Remote (contd)
 For multi user understanding watch classroom video
 Github Fork & Getting your changes merged
 Github has an option to fork where a copy of the others repo will be created in your account
@@ -295,9 +296,9 @@ push to your repo
 Create a pull request
 
 Refer Here for pull request
-https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests
+# https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests
 
-Popular Git Hostings
+# Popular Git Hostings
 
 . Github
 . Gitlab
@@ -305,7 +306,7 @@ Popular Git Hostings
 . Azure Source Repos
 . AWS Code Commit
 
-###GitHub
+### GitHub
 --------
   A Platform for Git Repositories
 
@@ -313,14 +314,14 @@ GitHub is a web-based platform that provides hosting for Git repositories. It of
 
 Github has extended beyond its function as a hosting platform into a comprehensive DevOps platform.
 
-Capabilities
+# Capabilities
 . Collaborative Coding
 . Planning and tracking: Issues
 . Milestones
 . Github discussions
 . Integrations with JIRA & Azure Boards
 
-Workflows & CI/CD
+# Workflows & CI/CD
 . CI/CD (Workflows)
 . Github Packages
 . Github Actions
@@ -335,7 +336,7 @@ Integrates with chat platforms such as Slack & Teams Security
 . SBoMs (Software bill of materials)
 . CodeQL (code analysis)
 
-Integrations:
+# Integrations:
 . SynK
 . Veracode
 . CheckMarx
