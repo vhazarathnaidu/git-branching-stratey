@@ -23,17 +23,11 @@
   * Git is known for its speed, flexibility, and powerful branching and merging capabilities.
   
   Key features of Git include:
-  
     1. Distributed Architecture: Each developer has a full copy of the repository, allowing for offline work and faster operations.
-    
     2. Branching and Merging: Git makes it easy to create branches for new features or bug fixes, and merge them back into the main codebase when ready.
-    
     3. Speed: Git is designed to be fast, with most operations performed locally, reducing the need for network access.
-    
     4. Data Integrity: Git uses a hashing algorithm (SHA-1) to ensure the integrity of the data, making it difficult to lose or corrupt information.
-    
     5. Collaboration: Git supports multiple workflows for collaboration, including feature branching, pull requests, and code reviews.
-  
   Overall, Git is a powerful tool that helps developers manage their code effectively, collaborate with others, and maintain a history of changes over time.
 
 ### Basic Git Commands
@@ -55,7 +49,7 @@
 15. `git stash`- Temporarily saves changes that are not ready to be committed.
 16. `git tag` <tag_name>` - Creates a tag for a specific commit, often used for releases.
 
-### Branching in Git
+### Branching in Git:
 
 * Branching is a powerful feature in Git that allows developers to create separate lines of development within a repository.
 * Each branch represents an independent version of the codebase, enabling multiple features, bug fixes, or experiments to be worked on simultaneously without affecting the main codebase.
@@ -65,7 +59,7 @@
 3.cherry-pick
 Refer Here for git branch docs from Atlassian " <https://www.atlassian.com/git/tutorials/using-branches>"
 
-## Merge
+## Merge:
 
 * Merging is the process of combining changes from one branch into another branch.
 * When you merge a branch, Git creates a new commit that incorporates the changes from both branches.
@@ -77,7 +71,7 @@ Refer Here for git branch docs from Atlassian " <https://www.atlassian.com/git/t
   If there are conflicts, Git will prompt you to resolve them before completing the merge.
   Refer here for "<https://www.atlassian.com/git/tutorials/using-branches/git-merge>" merge
 
-## Rebase
+## Rebase:
 
   * Rebasing is another way to integrate changes from one branch into another.
   * Instead of creating a new merge commit, rebasing rewrites the commit history by applying the changes from the source branch on top of the target branch.
@@ -87,7 +81,7 @@ Refer Here for git branch docs from Atlassian " <https://www.atlassian.com/git/t
   ` git rebase main`             # Rebase feature-branch onto main
   * If there are conflicts during the rebase, Git will pause and allow you to resolve them before continuing.
 
-## Cherry-pick
+## Cherry-pick:
 
   * Cherry-picking is the process of applying a specific commit from one branch to another branch.
   * This is useful when you want to incorporate a particular change without merging or rebasing the entire branch.
@@ -126,7 +120,7 @@ Options include:
 bash
 `git reset --soft HEAD~1` # Keeps changes staged
 `git reset --mixed HEAD~1`# Keeps changes unstaged
-`git reset --hard HEAD~1` # Discards changes completely
+`git reset --hard HEAD~1` # Discards changes completely```
 4.Squash:
 * A squash merge is a Git operation that combines all the changes from a feature branch into a single commit when merging it into the target branch.
 * This approach keeps the commit history clean and linear, making it easier to follow.
