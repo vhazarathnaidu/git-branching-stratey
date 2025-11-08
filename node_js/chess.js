@@ -37,6 +37,7 @@ function playerMove() {
   });
 }
 
+
 // Start the game
 console.log("Welcome to Command-Line Chess!");
 displayBoard();
