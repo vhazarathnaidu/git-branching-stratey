@@ -6,24 +6,22 @@ pipeline {
     }
 
     triggers {
-        pollSCM('* * * * *') // Example: poll every minute
+        pollSCM('* * * * *')
     }
 
     stages {
         stage('git') {
             steps {
-                stage('Checkout') {
-                         git branch: 'feature-ep-005-task-004',
-                    url: 'https://github.com/vhazarathnaidu/git-branching-stratey.git'
-				}
+                git url: 'https://github.com/dummyrepos/spring-petclinic-nov23.git',
+                    branch: 'dev'
             }
         }
 
-        stage('Build') {
+        stage('build') {
             steps {
                 sh 'mvn clean package'
-				archiveArtifacts artifacts: '**/git-branching-stratey*.jar'
-				junit testResults: '**/TEST-*.xml'
+                archiveArtifacts artifacts: '**/spring-petclinic-*.jar'
+                junit testResults: '**/TEST-*.xml'
             }
         }
     }
