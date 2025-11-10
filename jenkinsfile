@@ -4,7 +4,7 @@ pipeline {
         timeout(time: 30, unit: 'MINUTES')
 		}
 		trigger {
-		cron('* * * * *')
+		pollSCM('* * * * *')
 		}
     stages {
         stage('git') {
@@ -15,9 +15,9 @@ pipeline {
         }
         stage('build') { 
             steps {
-                dir('java'){
-				bat 'javac chess.java'
-				bat 'java chess'
+            dir 'mvn clean package'
+				archiveArtifacts artifacts: '**/spring-petclinic-*.jar'
+				junit testResults: '**/TEST-*.xml'
             }
            
         }
