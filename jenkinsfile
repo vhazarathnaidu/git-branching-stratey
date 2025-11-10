@@ -1,13 +1,10 @@
 pipeline 
 {
     agent any 
-	environment{
-	bat 'set "NODE_HOME=D:\\sftp\\node-v24.11.0-win-x64"'
-
-     bat 'set "PATH=%NODE_HOME%"'
-
-	}
-
+	environment {
+        NODE_HOME = 'D:\\sftp\\node-v24.11.0-win-x64'
+        PATH = "${NODE_HOME};${env.PATH}"
+    }
     triggers
     {
         pollSCM('H/2 * * * *')
