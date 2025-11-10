@@ -1,9 +1,9 @@
 pipeline 
 {
     agent any 
-	tools {
-        NODE_HOME 'NodeJS_24.11.0'
-    }
+	tools{
+	     NODE_HOME D:\sftp\node-v24.11.0-win-x64
+		 }
     triggers
     {
         pollSCM('H/2 * * * *')
