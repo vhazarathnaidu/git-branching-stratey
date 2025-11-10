@@ -2,7 +2,7 @@ pipeline
 {
     agent any 
 	tools {
-        nodejs 'NodeJS_24.11.0'
+        NODE_HOME 'NodeJS_24.11.0'
     }
     triggers
     {
