@@ -20,9 +20,10 @@ pipeline
             steps 
             {
                 echo 'build started'
-                cd java
-                javac Hello.java
-                java Hello
+                 dir('java') {
+                    bat 'javac Hello.java'
+                    bat '''java Hello'''
+                }
             }
         }
     }
