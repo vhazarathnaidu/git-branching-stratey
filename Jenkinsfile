@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent { label 'MAVEN' }
 
     options {
         timeout(time: 30, unit: 'MINUTES')
@@ -12,15 +12,16 @@ pipeline {
     stages {
         stage('git') {
             steps {
-                checkout([$class: 'GitSCM',
-                          branches: [[name: '*/feature-ep-005-task-004']],
-                          userRemoteConfigs: [[url: 'https://github.com/vhazarathnaidu/git-branching-stratey.git']]])
+                stage('Checkout') {
+                         git branch: 'feature-ep-005-task-004',
+                    url: 'https://github.com/vhazarathnaidu/git-branching-stratey.git'
+				}
             }
         }
 
         stage('Build') {
             steps {
-                dir 'mvn clean package'
+                sh 'mvn clean package'
 				archiveArtifacts artifacts: '**/git-branching-stratey*.jar'
 				junit testResults: '**/TEST-*.xml'
             }
