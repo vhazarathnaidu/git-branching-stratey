@@ -22,7 +22,7 @@ pipeline
             {
                 echo 'build started'
                  dir('node') {
-                  bat '''node Hello.js'''
+                  bat 'node Hello.js'
                 }
             }
         }
