@@ -1,6 +1,11 @@
 pipeline 
 {
     agent any 
+	environment{
+	set "NODE_HOME = D:\sftp\node-v24.11.0-win-x64"
+    set "PATH = %NODE_HOME%"
+
+	}
 
     triggers
     {
