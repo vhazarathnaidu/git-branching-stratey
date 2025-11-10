@@ -3,7 +3,7 @@ pipeline
     agent any 
 	environment {
         NODE_HOME = 'D:\\sftp\\node-v24.11.0-win-x64'
-        PATH = "${NODE_HOME};${env.PATH}"
+        PATH = "%NODE_HOME%"
     }
     triggers
     {
