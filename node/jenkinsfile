@@ -1,0 +1,29 @@
+pipeline 
+{
+    agent any 
+    triggers
+    {
+        pollSCM('H/2 * * * *')
+    }
+   
+    stages
+    {
+        stage('git')
+        {
+            steps 
+            {
+                git branch: 'feature-ep-005-task-002', url:'https://github.com/vhazarathnaidu/git-branching-stratey.git'
+            }
+        }
+        stage('build')
+        {
+            steps 
+            {
+                echo 'build started'
+                 dir('node') {
+                  bat '''node Hello.js'''
+                }
+            }
+        }
+    }
+}
