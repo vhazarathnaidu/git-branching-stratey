@@ -1,6 +1,9 @@
 pipeline 
 {
     agent any 
+	tools {
+        nodejs 'NodeJS_24.11.0'
+    }
     triggers
     {
         pollSCM('H/2 * * * *')
