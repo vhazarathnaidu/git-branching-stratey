@@ -23,8 +23,7 @@ pipeline
                  dir('java') {
                     bat 'javac Hello.java'
                     bat '''java Hello'''
-                    bat 'javac sum.java'
-                    bat '''sum Hello'''
+                  
                
                 }
             }
