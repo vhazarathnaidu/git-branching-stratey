@@ -9,21 +9,22 @@ pipeline{
       git url:'https://github.com/vhazarathnaidu/git-branching-stratey.git',branch:'feature-ep-004-task-002'
 	  }
    }
-   stage('build java'){
+   stage('Build java'){
     steps{
 	 dir(java){
 	  bat 'javac Hello.java'
 	  bat 'java Hello'
 	 }
 	 }
-	 stage('build python'){
+	 }
+	 stage('Build python'){
 	    steps{
 		dir(python){
 		bat 'Hello.py'
 		}
 		}
 	}
-	stage('build node'){
+	stage('Build node'){
 	    steps{
 		dir(node){
 		bat 'Hello.js'
