@@ -12,8 +12,8 @@ pipeline{
    stage('build') {
             steps {
                 dir('Jenkins/java') {
-                    bat 'javac Hello.java'
-                    bat 'java Hello'
+                    bat 'javac Main.java'
+                    bat 'java Main'
                 }
                 dir('Jenkins/python') {
                     bat 'python Hello.py'
@@ -26,5 +26,3 @@ pipeline{
   }
   }
   }
-
-
