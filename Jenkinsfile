@@ -6,32 +6,23 @@ pipeline{
   stages{
    stage('git'){
       steps{
-      git url:'https://github.com/vhazarathnaidu/git-branching-stratey.git',branch:'feature-ep-004-task-002'
+      git url:'https://github.com/vhazarathnaidu/git-branching-stratey.git',branch:'main'
 	  }
    }
-   stage('Build java'){
-    steps{
-	 dir(java){
-	  bat 'javac Hello.java'
-	  bat 'java Hello'
-	 }
-	 }
-	 }
-	 stage('Build python'){
-	    steps{
-		dir(python){
-		bat 'Hello.py'
-		}
-		}
-	}
-	stage('Build node'){
-	    steps{
-		dir(node){
-		bat 'Hello.js'
-		}
-		}
+   stage('build') {
+            steps {
+                dir('java') {
+                    bat 'javac Hello.java'
+                    bat 'java Hello'
+                }
+                dir('python') {
+                    bat 'python Hello.py'
+                }
+				dir('node'){
+				bat 'node Hello.js'
+				}
 	 }
 	
   }
-}
+
 
