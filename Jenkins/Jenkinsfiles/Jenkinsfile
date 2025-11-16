@@ -11,20 +11,18 @@ pipeline{
    }
    stage('build') {
             steps {
-                dir('Jenkins/java') {
+                dir('java') {
                     bat 'javac Hello.java'
                     bat 'java Hello'
                 }
-                dir('/Jenkinspython') {
+                dir('python') {
                     bat 'python Hello.py'
                 }
-				dir('/Jenkins/node'){
+				dir('node'){
 				bat 'node Hello.js'
 				}
 	 }
 	
-  }
-  }
   }
 
 
