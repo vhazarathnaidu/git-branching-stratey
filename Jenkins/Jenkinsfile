@@ -5,6 +5,10 @@ pipeline {
         pollSCM('H/2 * * * *')
     }
 
+    environment {
+	    USER_NAME= "vhazarathnaidu"
+        BRANCH_NAME= "${env.GIT_BRANCH ?: 'future-ep-004-task-002'}"
+    }
 
     stages {
 
