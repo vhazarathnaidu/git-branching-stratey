@@ -15,7 +15,7 @@ pipeline {
         stage('Checkout Code') {
             steps {
 			
-                git url:"https://github.com/${env.USER_NAME}/git-branching-strategy.git",branch:"${env.BRANCH_NAME}"
+                git url:"https://github.com/${env.USER_NAME}/git-branching-stratey.git",branch:"${env.BRANCH_NAME}"
             }
         }
 
