@@ -7,15 +7,15 @@ pipeline {
 
     environment {
 	    USER_NAME= "vhazarathnaidu"
-        // BRANCH_NAME= "${env.GIT_BRANCH ?: 'future-ep-004-task-002'}"
+        //BRANCH_NAME= "${env.GIT_BRANCH ?: 'future-ep-004-task-002'}"
     }
 
     stages {
 
         stage('Checkout Code') {
             steps {
-				echo "%BRANCH%"
-                git url:"https://github.com/${env.USER_NAME}/git-branching-stratey.git",branch:"%BRANCH%"
+				echo "${env.BRANCH_NAME}"
+                git url:"https://github.com/${env.USER_NAME}/git-branching-stratey.git",branch:"${env.BRANCH_NAME}"
             }
         }
 
