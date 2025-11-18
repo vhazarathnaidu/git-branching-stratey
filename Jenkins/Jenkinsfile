@@ -1,28 +1,76 @@
-pipeline{
-  agent any
-  triggers {
-   cron('* * * * *')
-  }
-  stages{
-   stage('git'){
-      steps{
-      git url:'https://github.com/vhazarathnaidu/git-branching-stratey.git',branch:'main'
-	  }
-   }
-   stage('build') {
+pipeline {
+    agent any
+
+    triggers {
+        pollSCM('H/2 * * * *')
+    }
+
+    environment {
+	    USER_NAME= "vhazarathnaidu"
+        #BRANCH_NAME= "${env.GIT_BRANCH ?: 'future-ep-004-task-002'}"
+    }
+
+    stages {
+
+        stage('Checkout Code') {
             steps {
-                dir('Jenkins/java') {
-                    bat 'javac Main.java'
-                    bat 'java Main'
+			
+                git url:"https://github.com/${env.USER_NAME}/git-branching-strategy.git",branch:"${env.BRANCH_NAME}"
+            }
+        }
+
+        stage('Build Java Project') {
+            steps {
+                dir("Jenkins/java") {
+                    script {
+                        if (isUnix()) {
+                            sh "javac Hello.java"
+							sh "javac Main.java"
+                        } else {
+                            bat "javac Hello.java"
+							bat "javac Main.java"
+                        }
+                    }
                 }
-                dir('Jenkins/python') {
-                    bat 'python Hello.py'
+            }
+        }
+		stage('deploy'){
+		steps{
+		     dir("Jenkins/java") {
+                    script {
+                        if (isUnix()) {
+                            sh "java Hello"
+							sh "java Main"
+                        }
+						else {
+                            bat "java Hello"
+							bat "java Main"
+                    }
                 }
-				dir('Jenkins/node'){
-				bat 'node Hello.js'
-				}
-	 }
-	
+            }
+			dir("Jenkins/python") {
+                    script {
+                        if (isUnix()) {
+                            sh "python Hello.py"
+                        }
+						else {
+                            bat "python Hello.py"
+                    }
+                }
+            }
+			dir("Jenkins/node") {
+                    script {
+                        if (isUnix()) {
+                            sh "node Hello.js"
+                        }
+						else {
+                            bat "node Hello.js"
+                    }
+                }
+            }
+			
+		}
+	}
+
   }
-  }
-  }
+}
