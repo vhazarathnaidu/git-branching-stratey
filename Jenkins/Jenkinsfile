@@ -35,6 +35,7 @@ pipeline {
 								javac Main.java
 							"""
                         } else {
+						    
                             bat "javac Hello.java"
 							bat "javac Main.java"
                         }
@@ -49,13 +50,14 @@ pipeline {
                         if (isUnix()) {
 						
                             sh """ 
-								echo "Running Java program..."
+								echo "Running Java program in unix shell ..."
 								java --version
 								java Main
 								echo "Completed ..."
 							"""
                         }
 						else {
+						echo "Running Java program in windows shell..."
                             bat "java Hello"
 							bat "java Main"
                     }
@@ -64,9 +66,14 @@ pipeline {
 			dir("Jenkins/python") {
                     script {
                         if (isUnix()) {
-                            sh "python Hello.py"
+                            sh """
+							   echo "Running python program in unix shell..."
+							   python Hello.py
+							
+							"""
                         }
 						else {
+						    echo "Running python program in windows shell...."
                             bat "python Hello.py"
                     }
                 }
@@ -74,9 +81,15 @@ pipeline {
 			dir("Jenkins/node") {
                     script {
                         if (isUnix()) {
-                            sh "node Hello.js"
+						        
+                            sh """
+							echo "Running Nodejs program in unix shell ..."
+							node Hello.js
+							
+							"""
                         }
 						else {
+						echo "Running Nodejs program in windows shell..."
                             bat "node Hello.js"
                     }
                 }
