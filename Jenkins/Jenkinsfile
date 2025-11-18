@@ -16,7 +16,8 @@ pipeline {
             steps {
 				echo "Current branch name: ${env.BRANCH_NAME}"
 				echo "Current branch name: ${env.GIT_BRANCH}" 
-                git branch: '${env.GIT_BRANCH}', url:"https://github.com/${env.USER_NAME}/git-branching-stratey.git"
+               // git branch: '${env.GIT_BRANCH}', url:"https://github.com/${env.USER_NAME}/git-branching-stratey.git"
+			   git url: "https://github.com/vhazarathnaidu/git-branching-stratey/tree/feature-ep-004-task-002"
             }
         }
 
