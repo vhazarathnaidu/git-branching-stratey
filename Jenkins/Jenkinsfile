@@ -19,7 +19,7 @@ pipeline {
 				
 			   git(
                     url: 'https://github.com/vhazarathnaidu/git-branching-stratey.git',
-                    branch: 'future-ep-004-task-002'
+                    branch: 'feature-ep-004-task-002'
                 )
             }
         }
