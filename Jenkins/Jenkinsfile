@@ -18,8 +18,8 @@ pipeline {
 				echo "Current branch name: ${env.GIT_BRANCH}" 
 				
 			   git(
-                    url: 'https://github.com/"${env.USER_NAME}"/git-branching-stratey.git',
-                    branch: '"${env.GIT_BRANCH}"'
+                    url: 'https://github.com/vhazarathnaidu/git-branching-stratey.git',
+                    branch: 'future-ep-004-task-002'
                 )
             }
         }
