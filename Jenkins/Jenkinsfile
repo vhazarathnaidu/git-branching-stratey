@@ -16,7 +16,7 @@ pipeline {
             steps {
 				echo "Current branch name: ${env.BRANCH_NAME}"
 				echo "Current branch name: ${env.GIT_BRANCH}" 
-				
+				echo "username: ${env.USER_NAME}"
 			   git(
                     url: "https://github.com/${env.USER_NAME}/git-branching-stratey.git",
                     branch: "${env.BRANCH_NAME}"
@@ -29,8 +29,11 @@ pipeline {
                 dir("Jenkins/java") {
                     script {
                         if (isUnix()) {
-                            sh "javac Hello.java"
-							sh "javac Main.java"
+							sh """ 
+								echo "Compailing Java..."
+								javac Hello.java
+								javac Main.java
+							"""
                         } else {
                             bat "javac Hello.java"
 							bat "javac Main.java"
@@ -44,8 +47,13 @@ pipeline {
 		     dir("Jenkins/java") {
                     script {
                         if (isUnix()) {
-                            sh "java Hello"
-							sh "java Main"
+						
+                            sh """ 
+								echo "Running Java program..."
+								java --version
+								java Main
+								echo "Completed ..."
+							"""
                         }
 						else {
                             bat "java Hello"
