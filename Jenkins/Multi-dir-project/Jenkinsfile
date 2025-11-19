@@ -4,7 +4,7 @@ pipeline {
     triggers {
         githubPush()
     }
-
+	
     environment {
 	    USER_NAME= "vhazarathnaidu"
         BRANCH_NAME= "${env.GIT_BRANCH}".replace('origin/', '')
@@ -30,7 +30,7 @@ pipeline {
                     script {
                         if (isUnix()) {
 							sh """ 
-								echo "Compailing Java..."
+								echo "Compailing Java program..."
 								javac Hello.java
 								javac Main.java
 							"""
