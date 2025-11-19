@@ -26,7 +26,7 @@ pipeline {
 
         stage('Build Java Project') {
             steps {
-                dir("Jenkins/java") {
+                dir("Jenkins/Multi-dir-project/java") {
                     script {
                         if (isUnix()) {
 							sh """ 
@@ -45,7 +45,7 @@ pipeline {
         }
 		stage('deploy'){
 		steps{
-		     dir("Jenkins/java") {
+		     dir("Jenkins/Multi-dir-project/java") {
                     script {
                         if (isUnix()) {
 						
@@ -63,7 +63,7 @@ pipeline {
                     }
                 }
             }
-			dir("Jenkins/python") {
+			dir("Jenkins/Multi-dir-project/python") {
                     script {
                         if (isUnix()) {
                             sh """
@@ -78,7 +78,7 @@ pipeline {
                     }
                 }
             }
-			dir("Jenkins/node") {
+			dir("Jenkins/Multi-dir-project/node") {
                     script {
                         if (isUnix()) {
 						        
