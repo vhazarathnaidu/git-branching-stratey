@@ -16,7 +16,7 @@ aws ec2 describe-security-groups
 # Get key pair name
 aws ec2 describe-key-pairs
 
-kireeti
+ "kireeti"
 
 
 # Create an ec2 instance
@@ -32,10 +32,3 @@ aws ec2 run-instances \
 
 
 
-
-
-
-
-aws ec2 describe-security-groups --filters "Name=group-name,Values=openssh"
-
-aws ec2 describe-security-groups --filters "Name=group-name,Values=openhttp"
