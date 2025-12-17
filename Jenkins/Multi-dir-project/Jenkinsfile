@@ -1,5 +1,5 @@
 pipeline {
-    agent none
+    agent any
 
     triggers {
         githubPush()
@@ -7,13 +7,52 @@ pipeline {
 	
     environment {
 	    USER_NAME= "vhazarathnaidu"
+		current_branch="${env.GIT_BRANCH}"
         BRANCH_NAME= "${env.GIT_BRANCH}".replace('origin/', '')
     }
 
     stages {
+	stage('Pre-Build: Create Jenkins Agents') {
+      
+    steps {
+        script {
+            echo "creating agents using scriptfile..."
+           if(isUnix()){
+		   sh 'D:/sfts/Agents/agents.bat'
+		   }else{
+		   bat 'D:\\sfts\\Agents\\agents.bat'
+		   }
+
+        }
+    }
+}
+      stage('wait for agents') {
+    steps {
+        script {
+            timeout(time: 2, unit: 'MINUTES') {
+
+                def agents = ['java-agent', 'python-agent', 'nodejs-agent']
+
+                for (nodeLabel in agents) {
+                    echo "waiting for ${nodeLabel} to come online..."
+
+                    waitUntil {
+                        try {
+                            node(nodeLabel) {
+                                echo "${nodeLabel} is online!"
+                            }
+                            return true
+                        } catch (Exception e) {
+                            return false
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
 
         stage('Checkout Code') {
-		agent any
             steps {
 				echo "Current branch name: ${env.BRANCH_NAME}"
 				echo "Current branch name: ${env.GIT_BRANCH}" 
