@@ -25,6 +25,7 @@ pipeline {
         }
 
         stage('Build Java Project') {
+		 agent { label 'java' }
             steps {
                 dir("Jenkins/Multi-dir-project/java") {
                     script {
@@ -43,7 +44,8 @@ pipeline {
                 }
             }
         }
-		stage('deploy'){
+		stage('deploy java'){
+		 agent { label 'java' }
 		steps{
 		     dir("Jenkins/Multi-dir-project/java") {
                     script {
@@ -63,6 +65,11 @@ pipeline {
                     }
                 }
             }
+			}
+			}
+			stage('deploy python'){
+			 agent { label 'python' }
+			steps{
 			dir("Jenkins/Multi-dir-project/python") {
                     script {
                         if (isUnix()) {
@@ -78,6 +85,11 @@ pipeline {
                     }
                 }
             }
+			}
+			}
+			stage('deploy nodejs'){
+			 agent { label 'nodejs' }
+			steps{
 			dir("Jenkins/Multi-dir-project/node") {
                     script {
                         if (isUnix()) {
@@ -94,9 +106,9 @@ pipeline {
                     }
                 }
             }
+			}
+			}
 			
 		}
 	}
 
-  }
-}
