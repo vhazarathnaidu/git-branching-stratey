@@ -1,0 +1,8 @@
+CREATE TABLE emp(
+id NUMBER,
+name VARCHAR2(20)
+);
+
+INSERT INTO emp VALUES(1,'ram');
+
+SELECT * FROM emp;
