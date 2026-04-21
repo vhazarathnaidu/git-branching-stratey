@@ -1,6 +1,6 @@
 sudo apt update
 
-sudo spt install open jdk-21-jre -y
+sudo apt install open jdk-21-jre -y
 
 sudo wget  -O/etc/apt/keyrings/jenkins-keyring.asc\
 https://pkg.jenkins.io/debian-stable/jenkins.io-2026.key
@@ -19,9 +19,6 @@ sudo systemctl enable jenkins
 
 sudo systemctl status jnekins
 
-http://your-ip:8080
- 
-sudo cat/var/lib/jenkins/secrets/initialAdminPassword
 
 
 
