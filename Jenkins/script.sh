@@ -1,31 +1,35 @@
 #!/bin/bash
 
-# Update system
-sudo apt update -y
+# system lo unna package list ni latest ga update chestundi
+sudo apt update
 
-# Install Java (Jenkins requires Java)
-sudo apt install openjdk-21-jre -y
+# Java install chestundi (Jenkins run avvadam ki Java compulsory)
+sudo spt install open jdk-21-jre -y
 
-# Create keyrings directory
-sudo mkdir -p /etc/apt/keyrings
+# Jenkins official security key ni download chesi system lo save chestundi
+sudo wget -O /etc/apt/keyrings/jenkins-keyring.asc\
+https://pkg.jenkins.io/debian-stable/jenkins.io-2026.key
 
-# Download Jenkins key
-curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key | sudo tee /etc/apt/keyrings/jenkins-keyring.asc > /dev/null
+# Jenkins repository ni add chestundi (ekkada nundi Jenkins download cheyyalo system ki chepthundi)
+echo "deb[signed-by=/etc/apt/keyrings/jenkins-keyring.asc]"\
+https://pkg.jenkins.io/debian-stable binary | sudo tee \
+/etc/apt/sources.list.d/jenkins.list>/dev/null
 
-# Add Jenkins repository
-echo "deb [signed-by=/etc/apt/keyrings/jenkins-keyring.asc] https://pkg.jenkins.io/debian-stable binary/" | sudo tee /etc/apt/sources.list.d/jenkins.list > /dev/null
+#kotha repository add ayyaka malli update chestundi
+sudo apt update 
 
-# Update repo
-sudo apt update -y
-
-# Install Jenkins
+# Jenkins ni install chestundi
 sudo apt install jenkins -y
 
-# Start Jenkins
+#System restart ayina prathi sari Jenkins automatic ga start avvali ani set chestundi.
 sudo systemctl start jenkins
 
-# Enable Jenkins at boot
-sudo systemctl enable jenkins
+#Jenkins ni manual ga start chestundi
+sudo systemctl enable jenkins 
 
-# Check status
-sudo systemctl status jenkins
+#Jenkins run avtunda, stop ayinda, error unda ani check chestundi.
+sudo systemctl status jnekins
+
+
+
+
