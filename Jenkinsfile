@@ -1,23 +1,42 @@
 pipeline {
     agent any
 
+    tools {
+        maven 'Maven'
+        jdk 'JDK17'
+    }
+
     stages {
-        stage('Clone') {
+        stage('Checkout') {
             steps {
-                git 'https://github.com/vhazarathnaidu/spring-petclinic.git'
-            }
+                git url: 'https://github.com/spring-projects/spring-petclinic.git'            }
         }
 
         stage('Build') {
             steps {
-                sh 'mvn clean install'
+                sh './mvnw clean compile'
             }
         }
 
-        stage('Run') {
+        stage('Test') {
             steps {
-                sh 'nohup java -jar target/*.jar &'
+                sh './mvnw test'
             }
+        }
+
+        stage('Package') {
+            steps {
+                sh './mvnw package -DskipTests'
+            }
+        }
+    }
+
+    post {
+        success {
+            echo 'Build successful!'
+        }
+        failure {
+            echo 'Build failed!'
         }
     }
 }
