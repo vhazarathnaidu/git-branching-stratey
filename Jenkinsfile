@@ -1,45 +1,51 @@
 pipeline {
     agent any
 
-    // 👇 Auto trigger when code is pushed to GitHub
+    // 👇 Poll SCM instead of webhook
     triggers {
-        githubPush()
+        pollSCM('H/5 * * * *')   // check every 5 minutes
     }
 
-    environment {
-        BRANCH = "feature-apr-ep-01-task-002"
+    options {
+        quietPeriod(60)               // wait 60 sec before build
+        disableConcurrentBuilds()     // no parallel builds
+        buildDiscarder(logRotator(numToKeepStr: '5'))
     }
 
     stages {
 
         stage('Clean Workspace') {
             steps {
-                echo "Cleaning workspace..."
                 deleteDir()
             }
         }
 
         stage('Checkout Code') {
             steps {
-                echo "Cloning Spring PetClinic from GitHub..."
-                git branch: "${BRANCH}",
-                    url: 'https://github.com/vhazarathnaidu/git-branching-stratey.git'
+                git branch: 'main',
+                    url: 'https://github.com/spring-projects/spring-petclinic.git'
             }
         }
 
         stage('Build') {
             steps {
-                echo "Building application using Maven Wrapper..."
-                sh '''
-                chmod +x mvnw
-                ./mvnw clean install -DskipTests
-                '''
+                script {
+                    try {
+                        sh '''
+                        chmod +x mvnw
+                        ./mvnw clean install -DskipTests
+                        '''
+                    } catch (err) {
+                        echo "❌ ERROR LINE:"
+                        echo err.getMessage()
+                        error("Build failed")   // stop pipeline
+                    }
+                }
             }
         }
 
         stage('Run') {
             steps {
-                echo "Starting application..."
                 sh '''
                 pkill -f 'java -jar' || true
                 nohup java -jar target/*.jar > app.log 2>&1 &
@@ -50,19 +56,10 @@ pipeline {
 
     post {
         success {
-            echo "======================================"
-            echo "✅ SUCCESS: Build & Deployment Completed!"
-            echo "Application running on port 8080"
-            echo "======================================"
+            echo "✅ SUCCESS: Build Completed & App Running"
         }
         failure {
-            echo "======================================"
-            echo "❌ ERROR: Build Failed!"
-            echo "Check console logs for details"
-            echo "======================================"
-        }
-        always {
-            echo "Pipeline execution finished."
+            echo "❌ FAILED: Check above error line only"
         }
     }
 }
