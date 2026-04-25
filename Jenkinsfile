@@ -1,7 +1,7 @@
 pipeline {
     agent any
 
-    // 👇 Poll SCM instead of webhook
+    // Poll SCM instead of webhook
     triggers {
         pollSCM('H/2 * * * *')   // check every 2 minutes
     }
@@ -56,10 +56,10 @@ pipeline {
 
     post {
         success {
-            echo "✅ SUCCESS: Build Completed & App Running"
+            echo "SUCCESS: Build Completed & App Running"
         }
         failure {
-            echo "❌ FAILED: Check above error line only"
+            echo "FAILED: Check above error line only"
         }
     }
 }
