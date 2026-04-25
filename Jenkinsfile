@@ -3,7 +3,7 @@ pipeline {
 
     // 👇 Poll SCM instead of webhook
     triggers {
-        pollSCM('H/5 * * * *')   // check every 5 minutes
+        pollSCM('H/2 * * * *')   // check every 2 minutes
     }
 
     options {
@@ -22,8 +22,8 @@ pipeline {
 
         stage('Checkout Code') {
             steps {
-                git branch: 'main',
-                    url: 'https://github.com/vhazarathnaidu/spring-petclinic'
+                git branch: 'feature-apr-ep-01-task-002',
+                    url: 'https://github.com/vhazarathnaidu/git-branching-stratey.git'
             }
         }
 
