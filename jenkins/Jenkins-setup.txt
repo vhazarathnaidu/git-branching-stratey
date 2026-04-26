@@ -6,7 +6,7 @@ This should run without manual intervenction
 Step 1: 
 jenkins v2.552 
 java version.21
-set java classpath  ->Environmental Variables loo save
+set java classpath  
 update os once insall required softwares 
 jenkins start 
 Admin Password 
