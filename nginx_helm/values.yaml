@@ -1,0 +1,42 @@
+replicaCount: 2
+
+metadata:
+  name: web1
+
+image:
+  repository: nginx
+  tag: 1.14.2
+
+selector:
+    app: nginx
+
+service:
+  type: NodePort
+  port: 80
+
+containerPort: 80
+strategy:
+  type: RollingUpdate
+  rollingUpdate:
+     maxUnavailable: 1
+     maxSurge: 1
+
+requests:
+  cpu: "100m"
+  memory: "128Mi"
+limits:
+  cpu: "200m"
+  memory: "256Mi"
+  
+livenessProbe:
+  httpGet:
+    path: /
+    port: 80
+  initialDelaySeconds: 10
+  periodSeconds: 10
+readinessProbe:
+  httpGet:
+    path: /
+    port: 80
+  initialDelaySeconds: 5
+  periodSeconds: 5
