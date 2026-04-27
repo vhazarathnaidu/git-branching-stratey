@@ -5,18 +5,15 @@ metadata:
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
-    matchLabels:
-      app: {{ .Values.selector.app }}
+    matchLabels: {{ .Values.selector | toYaml | nindent 6 }}
   template:
     metadata:
-      labels:
-        app: {{ .Values.selector.app }}
+      labels: {{ .Values.selector | toYaml | nindent 8 }}
     spec:
       containers:
         - name: {{ .Values.selector.app }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-          ports:
-            - containerPort: {{ .Values.containerPort }}
+          ports: {{ .Values | toYaml | nindent 10}}
           resources:
             requests:
               cpu:  {{ .Values.requests.cpu }}

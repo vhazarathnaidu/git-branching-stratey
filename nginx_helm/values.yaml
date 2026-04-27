@@ -1,3 +1,4 @@
+
 replicaCount: 2
 
 metadata:
@@ -8,8 +9,8 @@ image:
   tag: 1.14.2
 
 selector:
-    app: nginx
-
+  app: nginx
+  
 service:
   type: NodePort
   port: 80
