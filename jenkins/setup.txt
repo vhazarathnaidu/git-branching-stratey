@@ -1,0 +1,24 @@
+
+
+Jenkins Setup
+--------------
+
+Note: 
+  use separate file as "dependencies.config", which conains jenkins, java, python and maven with versions
+	Verfy the software installed successfuly or not?
+	Check instlled software version also, atleast print log
+	Once install each software set class path
+	
+  Use separate file as "pulgins.cofig", later user can add any aditional plugins
+  Create config.json file for nodes, agents_per_node and executors_per_agent
+  install require softwares and also use minmum 1 node with 2 agents with 2 exectuters
+  Minimum 2 jobs run parelally and remaining should be wait till existing jobs finish
+  Avoid manual intervenction
+  Cover Positive scenarios
+  This steps will cover negative scenarios
+  Finally provide final script
+  Push source ito git repo in daily basis
+  
+
+ Steps for Jenkins Setup:
+	
