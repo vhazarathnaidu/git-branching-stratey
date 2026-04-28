@@ -1,43 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
-metadata:
-  name: {{ .Values.metadata.name }}-deployment
+metadata: {{- toYaml .Values.metadata.labels | nindent 2}}-deployment
 spec:
   replicas: {{ .Values.replicaCount }}
-  selector:
-    matchLabels: {{ .Values.selector | toYaml | nindent 6 }}
+  selector: {{- .Values.selector | toYaml | nindent 4 }}
+  strategy: {{- toYaml .Values.strategy | nindent 4 }}
   template:
-    metadata:
-      labels: {{ .Values.selector | toYaml | nindent 8 }}
+    metadata: {{- toYaml .Values.metadata | nindent 6 }}
     spec:
-      containers:
-        - name: {{ .Values.selector.app }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-          ports: {{ .Values | toYaml | nindent 10}}
-          resources:
-            requests:
-              cpu:  {{ .Values.requests.cpu }}
-              memory: {{ .Values.requests.memory }}
-            limits:
-              cpu: {{ .Values.limits.cpu }}
-              memory: {{ .Values.limits.memory }}
-      
-          livenessProbe:
-            httpGet:
-              path: {{ .Values.livenessProbe.httpGet.path }}
-              port: {{ .Values.livenessProbe.httpGet.port }}
-            initialDelaySeconds: {{ .Values.livenessProbe.initialDelaySeconds }}
-            periodSeconds: {{ .Values.livenessProbe.periodSeconds }}
-
-          readinessProbe:
-            httpGet:
-              path: {{ .Values.readinessProbe.httpGet.path }}
-              port: {{ .Values.readinessProbe.httpGet.port }}
-            initialDelaySeconds: {{ .Values.readinessProbe.initialDelaySeconds }}
-            periodSeconds: {{ .Values.readinessProbe.periodSeconds }}
-    
-    strategy:
-      type: {{ .Values.strategy.type }}
-      rollingUpdate:
-        maxUnavailable: {{ .Values.strategy.rollingUpdate.maxUnavailable }}
-        maxSurge: {{ .Values.strategy.rollingUpdate.maxSurge }}
+      containers: {{ .Values.containers | toYaml | nindent 8 }}
+          image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+          ports: {{ .Values.port | toYaml | nindent 12 }}
+          resources: {{- toYaml .Values.resources | nindent 12 }}
+          livenessProbe: {{- toYaml .Values.livenessProbe | nindent 12 }}
+          readinessProbe: {{- toYaml .Values.readinessProbe | nindent 12 }}
