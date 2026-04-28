@@ -18,6 +18,8 @@ Note:
        create config.json file in nodes to diffine each node,agent,executor in json format
        Agents and executors values should be given in integers (numbers).
        control the number of agents and the parallel execution of jobs.
+       work should be evently distributed between agents and executors
+if workload increases we need increase nodes or increase agents/executors 
        If increatesd the executors value, multiple jobs can run in parallel on a single agent.
        the executors value is low, jobs will wait in the queue.
 	
