@@ -14,9 +14,9 @@ Note:
 	   Read "pulgins.cofig" using shellscript and install one by one in the "pulgins.cofig" file list using loop
 	
   Create config.json file for nodes, agents_per_node and executors_per_agent
-       Create config.json file for nodes, agents_per_node and executors_per_agent
-       create config.json file in nodes to diffine each node,agent,executor in json format
-       Agents and executors values should be given in integers (numbers).
+       
+       create config.json file to diffine each node,agent,executor in json format
+       nodes,Agents and executors values should be given in integers (numbers).
        control the number of agents and the parallel execution of jobs.
        work should be evently distributed between agents and executors
        if workload increases we need increase nodes or increase agents/executors 
