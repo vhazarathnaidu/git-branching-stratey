@@ -20,14 +20,30 @@ sudo systemctl enable jenkins
 
 # Display initial admin password
 echo "Jenkins installed! Initial admin password:"
-sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 
 echo "Access Jenkins at http://localhost:8080"
 
 ADMIN_USER="admin"
 
 # Read initial admin password
-ADMIN_PASS=$(cat /var/lib/jenkins/secrets/initialAdminPassword)
+ADMIN_PASS=$(sudo cat /var/lib/jenkins/secrets/initialAdminPassword)
+
+echo "Admin password ${ADMIN_PASS}"
+
+NEW_IP=$(curl -s http://169.254.169.254/latest/meta-data/public-ipv4)
+
+if [ -z "$NEW_IP" ]; then
+  NEW_IP=$(curl -s http://checkip.amazonaws.com)
+fi
+
+if [ -z "$NEW_IP" ]; then
+  echo "Failed to fetch Public IP"
+  exit 1
+fi
+
+JENKINS_URL="http://$NEW_IP:8080"
+
+wget -q $JENKINS_URL/jnlpJars/jenkins-cli.jar
 
 java -jar "jenkins-cli.jar" -s "http://localhost:8080" -auth $ADMIN_USER:$ADMIN_PASS groovy = < create_jenkins_user.groovy
 echo "Admin user created jenkins/jenkins"
