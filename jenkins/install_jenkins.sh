@@ -34,7 +34,7 @@ wget -q http://localhost:8080/jnlpJars/jenkins-cli.jar
 echo "jenkins cli downloaded"
 ls -ltr
 
-java -jar "jenkins-cli.jar" -s "http://localhost:8080" -auth $ADMIN_USER:$ADMIN_PASS groovy = < create_jenkins_user.groovy
+java -jar "jenkins-cli.jar" -s "http://localhost:8080" -auth $ADMIN_USER:$ADMIN_PASS groovy = < jenkins/create_jenkins_user.groovy
 echo "Admin user created jenkins/jenkins"
 
 sudo systemctl stop jenkins
