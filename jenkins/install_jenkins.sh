@@ -48,6 +48,8 @@ wget -q $JENKINS_URL/jnlpJars/jenkins-cli.jar
 java -jar "jenkins-cli.jar" -s "http://localhost:8080" -auth $ADMIN_USER:$ADMIN_PASS groovy = < create_jenkins_user.groovy
 echo "Admin user created jenkins/jenkins"
 
+sudo systemctl stop jenkins
+sudo systemctl start jenkins
 # /tmp 
 #sudo systemctl stop jenkins
 #sudo rm -rf /tmp/*
