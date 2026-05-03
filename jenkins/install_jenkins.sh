@@ -18,8 +18,16 @@ sudo apt install -y jenkins
 sudo systemctl start jenkins
 sudo systemctl enable jenkins
 
-# Display initial admin password
-echo "Jenkins installed! Initial admin password:"
+echo "Jenkins installed! Sucessfully!!!"
+
+public_ip=$(sudo curl -s ifconfig.me)
+echo "Waiting for Jenkins to start..."
+
+until curl -s http://public_ip:8080/login > /dev/null; do
+  sleep 5
+done
+
+echo "Jenkins is up ✅"
 
 echo "Access Jenkins at http://localhost:8080"
 
@@ -30,7 +38,6 @@ ADMIN_PASS=$(sudo cat /var/lib/jenkins/secrets/initialAdminPassword)
 
 echo "Admin password ${ADMIN_PASS}"
 
-public_ip=$(sudo curl -s ifconfig.me)
 echo "public_ip ${public_ip}"
 
 url="http://${public_ip}:8080/jnlpJars/jenkins-cli.jar"
@@ -67,7 +74,7 @@ import jenkins.security.s2m.AdminWhitelistRule
 def instance = Jenkins.getInstance()
 
 def username = "jenkins"
-def password = "jenkins"
+def password = "jenkins@123"
 
 // Get security realm
 def hudsonRealm = instance.getSecurityRealm()
@@ -92,11 +99,13 @@ instance.save()
 
 EOF
 
+echo "Admin user created jenkins new user name: jenkins and password: jenkins@123"
 
-sudo systemctl restart jenkins
+sudo systemctl stop jenkins
+sudo systemctl start jenkins
 
 
-
+echo "Admin user created http://${public_ip}:8080/"
 
 # /tmp 
 #sudo systemctl stop jenkins
