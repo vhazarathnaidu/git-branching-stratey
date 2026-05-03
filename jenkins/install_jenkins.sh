@@ -30,7 +30,11 @@ ADMIN_PASS=$(sudo cat /var/lib/jenkins/secrets/initialAdminPassword)
 
 echo "Admin password ${ADMIN_PASS}"
 
-wget -q http://localhost:8080/jnlpJars/jenkins-cli.jar
+public_ip = $(sudo curl -s ifconfig.me)
+echo "public_ip ${public_ip}"
+
+
+wget -q http://${public_ip}:8080/jnlpJars/jenkins-cli.jar
 echo "jenkins cli downloaded"
 ls -ltr
 
