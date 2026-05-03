@@ -31,7 +31,7 @@ ADMIN_PASS=$(sudo cat /var/lib/jenkins/secrets/initialAdminPassword)
 echo "Admin password ${ADMIN_PASS}"
 
 public_ip=$(sudo curl -s ifconfig.me)
-echo "public_ip ${public_ip}"
+echo "url ${url}"
 
 url="http://${public_ip}:8080/jnlpJars/jenkins-cli.jar"
 echo "public_ip ${public_ip}"
