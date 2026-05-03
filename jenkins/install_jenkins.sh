@@ -59,11 +59,41 @@ sudo systemctl restart jenkins
 
 echo "jenkins Configuration done..."
 
-java -jar "jenkins-cli.jar" -s "http://${public_ip}:8080" -auth $ADMIN_USER:$ADMIN_PASS groovy < jenkins/create_jenkins_user.groovy
-echo "Admin user created jenkins/jenkins"
+sudo tee /var/lib/jenkins/init.groovy.d/create-admin.groovy > /dev/null <<EOF
+import jenkins.model.*
+import hudson.security.*
+import jenkins.security.s2m.AdminWhitelistRule
 
-sudo systemctl stop jenkins
-sudo systemctl start jenkins
+def instance = Jenkins.getInstance()
+
+def username = "jenkins"
+def password = "jenkins"
+
+// Get security realm
+def hudsonRealm = instance.getSecurityRealm()
+
+// Check if user already exists
+def user = hudson.model.User.getById(username, false)
+
+// Create user
+hudsonRealm.createAccount(username, password)
+println "User created: ${username}"
+
+// Setup authorization strategy (Full control once logged in OR matrix-based)
+def strategy = new GlobalMatrixAuthorizationStrategy()
+
+// Grant all permissions to admin user
+strategy.add(Jenkins.ADMINISTER, username)
+
+instance.setAuthorizationStrategy(strategy)
+
+// Save Jenkins config
+instance.save()
+
+EOF
+
+
+sudo systemctl restart jenkins
 
 
 
