@@ -20,16 +20,11 @@ sudo systemctl enable jenkins
 
 echo "Jenkins installed! Sucessfully!!!"
 
+
+sleep 120
+
 public_ip=$(sudo curl -s ifconfig.me)
-echo "Waiting for Jenkins to start..."
 
-until curl -s http://public_ip:8080/login > /dev/null; do
-  sleep 5
-done
-
-echo "Jenkins is up ✅"
-
-echo "Access Jenkins at http://localhost:8080"
 
 ADMIN_USER="admin"
 
@@ -65,6 +60,17 @@ EOF
 sudo systemctl restart jenkins
 
 echo "jenkins Configuration done..."
+
+echo "Waiting for Jenkins to start..."
+
+until curl -s http://public_ip:8080/login > /dev/null; do
+  sleep 5
+done
+
+echo "Jenkins is up ✅"
+
+echo "Access Jenkins at http://localhost:8080"
+
 
 sudo tee /var/lib/jenkins/init.groovy.d/create-admin.groovy > /dev/null <<EOF
 import jenkins.model.*
