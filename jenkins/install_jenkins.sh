@@ -63,8 +63,15 @@ echo "jenkins Configuration done..."
 
 echo "Waiting for Jenkins to start..."
 
-until curl -s http://public_ip:8080/login > /dev/null; do
-  sleep 5
+while true; do
+  STATUS=$(curl -s -o /dev/null -w "%{http_code}" http://${public_ip}:8080/login)
+  if [ "$STATUS" = "200" ]; then
+    echo "Jenkins is fully ready ✅"
+    break
+  else
+    echo "Waiting... ($STATUS)"
+    sleep 5
+  fi
 done
 
 echo "Jenkins is up ✅"
