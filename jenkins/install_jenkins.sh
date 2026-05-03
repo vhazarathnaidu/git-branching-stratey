@@ -40,7 +40,19 @@ wget -q http://localhost:8080/jnlpJars/jenkins-cli.jar
 echo "jenkins cli downloaded"
 ls -ltr
 
-java -jar "jenkins-cli.jar" -s "http://${public_ip}:8080" -auth $ADMIN_USER:$ADMIN_PASS groovy = < jenkins/create_jenkins_user.groovy
+java -jar jenkins-cli.jar -s http://localhost:8080 \
+-auth $ADMIN_USER:$ADMIN_PASS groovy = <<EOF
+import jenkins.model.*
+import jenkins.model.JenkinsLocationConfiguration
+
+def jlc = JenkinsLocationConfiguration.get()
+jlc.setUrl("http://${PUBLIC_IP}:8080/")
+jlc.save()
+
+println("Jenkins URL set to: http://${PUBLIC_IP}:8080/")
+EOF
+
+java -jar "jenkins-cli.jar" -s "http://${public_ip}:8080" -auth $ADMIN_USER:$ADMIN_PASS groovy < jenkins/create_jenkins_user.groovy
 echo "Admin user created jenkins/jenkins"
 
 sudo systemctl stop jenkins
