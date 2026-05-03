@@ -40,17 +40,10 @@ wget -q http://localhost:8080/jnlpJars/jenkins-cli.jar
 echo "jenkins cli downloaded"
 ls -ltr
 
-java -jar jenkins-cli.jar -s http://localhost:8080 \
--auth $ADMIN_USER:$ADMIN_PASS groovy = <<EOF
-import jenkins.model.*
-import jenkins.model.JenkinsLocationConfiguration
+sudo sed -i "s|<jenkinsUrl>.*</jenkinsUrl>|<jenkinsUrl>http://${public_ip}:8080/</jenkinsUrl>|" \
+/var/lib/jenkins/jenkins.model.JenkinsLocationConfiguration.xml
 
-def jlc = JenkinsLocationConfiguration.get()
-jlc.setUrl("http://${PUBLIC_IP}:8080/")
-jlc.save()
-
-println("Jenkins URL set to: http://${PUBLIC_IP}:8080/")
-EOF
+sudo systemctl restart jenkins
 
 echo "jenkins Configuration done..."
 
