@@ -33,6 +33,8 @@ ADMIN_PASS=$(sudo cat /var/lib/jenkins/secrets/initialAdminPassword)
 
 echo "Admin password ${ADMIN_PASS}"
 
+sudo sed -i 's|<useSecurity>true</useSecurity>|<useSecurity>false</useSecurity>|' /var/lib/jenkins/config.xml
+
 echo "public_ip ${public_ip}"
 
 url="http://${public_ip}:8080/jnlpJars/jenkins-cli.jar"

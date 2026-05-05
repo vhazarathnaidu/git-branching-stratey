@@ -1,4 +1,5 @@
-default
-git 
-ant
-maven
+git
+workflow-aggregator
+credentials
+ssh-slaves
+matrix-auth
