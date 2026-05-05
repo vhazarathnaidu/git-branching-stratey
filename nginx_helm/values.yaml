@@ -1,31 +1,33 @@
 replicaCount: 2
 
-metadata:
-  labels:
-    name: web1
+name: web1
+
+labels:
+  app: nginx
 
 image:
   repository: nginx
-  tag: 1.25
+  tag: "1.25"
 
-selector:
-  matchLabels:
-    app: nginx
-containers:
-  - name: nginx
+template:
+  metadata:
+    labels:
+      name: web1
 
 strategy:
   type: RollingUpdate
   rollingUpdate:
-     maxUnavailable: 1
-     maxSurge: 1
+    maxUnavailable: 1
+    maxSurge: 1
 
-service:
-  type: NodePort
-ports: 
+container:
+  - name: nginx
+  
+ports:
   - port: 80
     targetPort: 80
-    NodePort: 30005
+    nodePort: 30007
+    protocol: TCP
 
 port:
   - containerPort: 80
@@ -38,7 +40,7 @@ resources:
   limits:
     cpu: "200m"
     memory: "256Mi"
-  
+
 livenessProbe:
   httpGet:
     path: /
@@ -54,3 +56,12 @@ readinessProbe:
   initialDelaySeconds: 5
   periodSeconds: 5
   timeoutSeconds: 5
+  
+autoscaling: 
+  minReplicas: 1
+  maxReplicas: 4
+  targetCPUUtilizationPercentage: 60
+  targetMemoryUtilizationPercentage: 60
+
+service:
+  type: NodePort

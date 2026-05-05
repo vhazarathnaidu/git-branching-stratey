@@ -1,14 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
-metadata: {{- toYaml .Values.metadata.labels | nindent 2}}-deployment
+metadata:
+  name: {{.Values.name}}
 spec:
   replicas: {{ .Values.replicaCount }}
-  selector: {{- .Values.selector | toYaml | nindent 4 }}
+  selector: 
+    matchLabels: 
+      name: {{ .Values.name }}
   strategy: {{- toYaml .Values.strategy | nindent 4 }}
-  template:
-    metadata: {{- toYaml .Values.metadata | nindent 6 }}
+  template: {{- toYaml .Values.template | nindent 4 }}
     spec:
-      containers: {{ .Values.containers | toYaml | nindent 8 }}
+      containers: {{ .Values.container | toYaml | nindent 8 }}
           image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
           ports: {{ .Values.port | toYaml | nindent 12 }}
           resources: {{- toYaml .Values.resources | nindent 12 }}
