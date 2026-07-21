@@ -1,0 +1,5 @@
+{
+  "nodes": 2,
+  "agents_per_node": 1,
+  "executors_per_agent": 2
+}

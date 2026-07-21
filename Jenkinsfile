@@ -4,6 +4,16 @@ pipeline {
     tools {
         maven 'Maven'
         jdk 'JDK17'
+      
+    // Poll SCM instead of webhook
+    triggers {
+        pollSCM('H/2 * * * *')   // check every 2 minutes
+    }
+
+    options {
+        quietPeriod(60)               // wait 60 sec before build
+        disableConcurrentBuilds()     // no parallel builds
+        buildDiscarder(logRotator(numToKeepStr: '5'))
     }
 
     stages {
@@ -29,16 +39,54 @@ pipeline {
         stage('Package') {
             steps {
                 bat 'mvn package'
+              
+        stage('Clean Workspace') {
+            steps {
+                deleteDir()
             }
         }
-    }
 
+        stage('Checkout Code') {
+            steps {
+                git branch: 'feature-apr-ep-01-task-002',
+                    url: 'https://github.com/vhazarathnaidu/git-branching-stratey.git'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                script {
+                    try {
+                        sh '''
+                        chmod +x mvnw
+                        ./mvnw clean install -DskipTests
+                        '''
+                    } catch (err) {
+                        echo "❌ ERROR LINE:"
+                        echo err.getMessage()
+                        error("Build failed")   // stop pipeline
+                    }
+                }
+            }
+        }
+
+        stage('Run') {
+            steps {
+                sh '''
+                pkill -f 'java -jar' || true
+                nohup java -jar target/*.jar > app.log 2>&1 &
+                '''
     post {
-        success {
-            echo 'Build Successful'
+        success 
+ echo 'Build Successful'
         }
         failure {
             echo 'Build Failed'
+=======
+            echo "SUCCESS: Build Completed & App Running"
+        }
+        failure {
+            echo "FAILED: Check above error line only
         }
     }
 }

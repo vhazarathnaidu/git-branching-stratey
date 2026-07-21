@@ -1,0 +1,38 @@
+Setup Jenkins (Technical Specfication Document) 
+--------------
+
+This should run without manual intervenction
+
+Step 1: 
+jenkins v2.552 
+
+java version.21
+
+set java classpath --> " .:path1:path2" -->$CLASSPATH
+
+
+update os once insall required softwares  --> Debain / Ubuntu (How -->Sudo apt update) 
+                  |                                                          
+				  |                                                          
+			Jenkins , Java     
+
+			
+jenkins start --> sudo systemctl start jenkins.
+
+Open Jenkins in Browser -->http:server ip :8080
+
+Admin Password 
+
+Jenkins Key -->  sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+
+set username & password  
+
+installed plugins --> Git Plugin, Pipeline , Maven Integration
+ 
+Jenkins Url 
+
+Save & Continue
+
+
+
+
