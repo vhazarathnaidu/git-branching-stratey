@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    tools {
+        maven 'Maven'
+        jdk 'JDK17'
+      
     // Poll SCM instead of webhook
     triggers {
         pollSCM('H/2 * * * *')   // check every 2 minutes
@@ -14,6 +18,28 @@ pipeline {
 
     stages {
 
+        stage('Clone Repo') {
+            steps {
+                git 'https://github.com/spring-projects/spring-petclinic.git'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                bat 'mvn clean package -DskipTests'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                bat 'mvn test'
+            }
+        }
+
+        stage('Package') {
+            steps {
+                bat 'mvn package'
+              
         stage('Clean Workspace') {
             steps {
                 deleteDir()
@@ -50,16 +76,17 @@ pipeline {
                 pkill -f 'java -jar' || true
                 nohup java -jar target/*.jar > app.log 2>&1 &
                 '''
-            }
-        }
-    }
-
     post {
-        success {
+        success 
+ echo 'Build Successful'
+        }
+        failure {
+            echo 'Build Failed'
+=======
             echo "SUCCESS: Build Completed & App Running"
         }
         failure {
-            echo "FAILED: Check above error line only"
+            echo "FAILED: Check above error line only
         }
     }
 }
