@@ -1,0 +1,44 @@
+
+
+Jenkins Setup
+--------------
+
+Note: 
+  use separate file as "dependencies.config", which conains jenkins, java, python and maven with versions
+	   Verfy the software installed successfuly or not?
+	   Check instlled software version also, atleast print log
+	   Once install each software set class path
+	
+  Use separate file as "pulgins.cofig", later user can add any aditional plugins if required
+       install default plugins in the newly installed jenkins 
+	   Read "pulgins.cofig" using shellscript and install one by one in the "pulgins.cofig" file list using loop
+	
+  Create config.json file for nodes, agents_per_node and executors_per_agent
+       
+       create config.json file to diffine each node,agent,executor in json format
+       nodes,Agents and executors values should be given in integers (numbers).
+       control the number of agents and the parallel execution of jobs.
+       work should be evently distributed between agents and executors
+       if workload increases we need increase nodes or increase agents/executors 
+       If increatesd the executors value, multiple jobs can run in parallel on a single agent.
+       the executors value is low, jobs will wait in the queue.
+	
+  install require softwares and also use minmum 1 node with 2 agents with 2 exectuters
+       A separate machine is prepared as a node  
+       Required software like Java is installed on the node
+       Jenkins agent is connected to the node using a secure method  
+	   After successful connection, the node becomes an active agent in Jenkins
+       Jenkins uses this agent node to run jobs
+       2 executors are configured in the same node as two jobs are running parallally. So each executor runs one job at a time.
+       So 2 jobs can run in parallel on a single node.
+  
+ Minimum 2 jobs run parelally and remaining jobs should be wait till existing jobs finish
+ Avoid manual intervenction
+ Cover Positive scenarios
+ This steps will cover negative scenarios
+ Finally provide final script
+ Push source ito git repo in daily basis
+  
+
+ Steps for Jenkins Setup:
+	
