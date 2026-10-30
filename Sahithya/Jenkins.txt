@@ -1,0 +1,25 @@
+1) What is Jenkins? 
+Jenkins is a free open source Continuous Integration tool and automation server to monitor continuous integration and delivery. It is written in Java. It is known as an automated Continuous Delivery tool that helps to build and test the software system with easy integration of changes to the system. Jenkins follows Groovy Scripting. Also, it enables developers to continuously check in their code and also analyze the post-build actions. The automation testers can use to run their tests as soon as the new code is added or code is modified.
+
+2) What are the features of Jenkins? 
+Jenkins comes with the following features:
+ 1. Free open source.
+ 2. Easy installation on various operating systems.
+ 3. Build Pipeline Support.
+ 4. Workflow Plugin.
+ 5. Test harness built around JUnit.
+ 6. Easy upgrades.
+ 7. Rapid release cycle.
+ 8. Easy configuration setup.
+ 9. Extensible with the use of third-party plugins.
+ 
+ 
+3) What are the advantages of Jenkins? Why we use Jenkins? 
+Jenkins is used to continuously monitor the large code base in real-time. It enables developers to find bugs in their code and fix them. Email notifications are made to the developers regarding their check-ins as a post-build action. 
+Advantages of Jenkins are as follows: 
+   Build failures are cached during the integration stage. 
+   Notifies the developers about build report status using LDAP (Lightweight Directory Access Protocol) mail server.
+   Maven release project is automated with simple steps.
+   Easy bug tracking.
+   Automatic changes get updated in the build report with notification.
+   Supports Continuous Integration in agile development and test-driven development.
